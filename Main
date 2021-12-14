@@ -1,0 +1,33 @@
+# Imports
+import Calculator
+
+#---INTRO---#
+print("Hello and welcome to wave calculator 1.0!")
+print("")
+print("You can ask to calculate: A) The wavelength // B) Frequency // C) Speed of the wave // D) Period")
+print("")
+decision = input("What would you like to calculate? ")
+print("------------------------------------------------------------------------------------------------")
+print("")
+#---INTRO---#
+
+
+#---MATH CAL---#
+
+#- Finding V -#
+if decision == "C":
+    Calculator.V()
+
+#- Finding T -#
+if decision == "D":
+    Calculator.T()
+
+#- Finding f -#
+elif decision == "B":
+    Calculator.f()
+
+#- Finding lamdah -#
+elif decision == "A":
+    Calculator.lamdah()
+print("")
+print("")
