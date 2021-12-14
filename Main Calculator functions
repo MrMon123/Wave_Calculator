@@ -1,0 +1,171 @@
+"""
+Calculator
+
+Description:
+"""
+# Variables to check what parts of the equation we have
+V = 0
+A = 0
+lamdah = 0
+f = 0
+T = 0
+
+
+# --- Period CAL (T) ---#
+def T():
+    print(
+        "To find the period I only need the frequency, if you don't have that you can use the other options to calculate the frequency")
+    f = float(input("Please enter the frequency: "))
+    print(
+        "-----------------------------------------------------------------------------------------------------------------------------")
+    print("")
+    T = 1 / f
+    print("The period for this wave is " + str(T) + " seconds")
+    print(
+        "-----------------------------------------------------------------------------------------------------------------------------")
+    0
+
+
+# --- Frequency CAL (f) --- #
+def f():
+    print("To find the frequency I need either A) the period or, B) the speed of the wave, and the wavelength")
+    dec = input("A or B? ")
+    print("")
+
+    # Start of CAL - Option A
+    if dec == "A":
+        T = float(input("Please enter the period: "))
+        f = 1 / T
+        print("The frequency is " + str(f) + "Hz.")
+
+    # Start of CAL - Option B
+    if dec == "B":
+        V = float(input("Please enter the speed of the wave: "))
+        lamdah = float(input("Please enter the length of the wave: "))
+        f = V / lamdah
+        print("The frequency of this wave is " + str(f) + "Hz.")
+
+
+# --- Wave Length CAL (lamdah) --- #
+def lamdah():
+    print(
+        "To calculate the wave length I need either A) The speed of the wave and the frequency or B) speed of the wave and the period")
+    dec = input("Option A or B: ")
+    print(
+        "----------------------------------------------------------------------------------------------------------------------------")
+    print("")
+
+    # Start of CAL - A option
+    if dec == "A":
+        V = float(input("Please enter the speed of the wave: "))
+        f = float(input("Please enter the frequency: "))
+        print("")
+
+        lamdah = V / f
+        lamdah = round(lamdah)
+        print("The length of the wave is " + str(lamdah) + " meters.")
+
+    # Start of CAL - B option #
+    if dec == "B":
+        T = float(input("Please enter the period: "))
+        print("")
+        V = float(input("Please enter the speed of the wave: "))
+
+        f = 1 / T
+        lamdah = V / f
+        round(lamdah)
+        print("The length of the wave is " + str(lamdah) + " meters")
+        print("------------------------------------------------------")
+
+
+# --- Speed of Wave CAL (V) --- #
+def V():
+    print("In order to find speed I need the A) frequency and wavelength or B) the wavelength and period")
+    print("")
+    dec = input("Please enter A or B: ")
+    print("---------------------------------------------------------------------------------------------")
+
+    # Start of cal - A OPTION
+    if dec == "A":
+        f = float(input("Please enter the frequency of the wave: "))
+        print("")
+        lamdah = float(input("Please enter the wavelength: "))
+        print("--------------------------------------------------")
+        print("")
+
+        # Unit Conversion - A OPTION
+        unit = input("Enter the unit used for you wavelength (meters, centimeters, inches, feet, etc) ")
+        if unit == "feet":
+            lamdah *= meter_con["feet"]
+        elif unit == "yards":
+            lamdah *= meter_con["yards"]
+        elif unit == "inches":
+            lamdah *= meter_con["inches"]
+        elif unit == "kilometers":
+            lamdah *= meter_con["kilometers"]
+        elif unit == "centimeters":
+            lamdah /= meter_con["centimeters"]
+        elif unit == "millimeters":
+            lamdah /= meter_con["millimeters"]
+        elif unit == "miles":
+            lamdah *= meter_con["miles"]
+
+        # Main cal - A OPTION
+        V = f * lamdah
+        V = round(V)
+        print(str(V) + " m/s")
+        print("")
+
+        # Main cal CONVERT - A OPTION
+        ans = input("would you like to convert the unit of v?") == "y"
+        if ans:
+            unit = input("Enter the unit you would like to convert to (meters, centimeters, inches, feet, etc)")
+            input("STILL A WORK IN PROGRESS PLEASE PRESS ENTER")
+            print("")
+            print("")
+            print("")
+
+        # -- OPTION B --#
+    elif dec == "B":
+        T = float(input("Please enter the period: "))
+        lamdah = float(input("PLease enter the wave length: "))
+        unit = input("Enter the unit used for you wavelength (meters, centimeters, inches, feet, etc)")
+        print("")
+
+        # Unit conversion - Option B
+        if unit == "feet":
+            lamdah *= meter_con["feet"]
+        elif unit == "yards":
+            lamdah *= meter_con["yards"]
+        elif unit == "inches":
+            lamdah *= meter_con["inches"]
+        elif unit == "kilometers":
+            lamdah *= meter_con["kilometers"]
+        elif unit == "centimeters":
+            lamdah /= meter_con["centimeters"]
+        elif unit == "millimeters":
+            lamdah /= meter_con["millimeters"]
+        elif unit == "miles":
+            lamdah *= meter_con["miles"]
+
+        # Main Cal - OPTION B
+        print("")
+        f = 1 // T
+        V = f * lamdah
+        V = round(V)
+        print(str(V) + " m/s")
+
+
+# --- END OF SPEED CALCULATION --- #
+
+
+# Holds the conversions for forward calculations ( blank to meters )
+meter_con = {
+    "inches": 0.3048,  # *
+    "feet": 0.9144,  # *
+    "yards": 0.0254,  # *
+    "kilometers": 1000,  # *
+    "centimeters": 100,  # /
+    "millimeters": 1000,  # /
+    "miles": 1609.344  # *
+}
